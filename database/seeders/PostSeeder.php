@@ -55,6 +55,7 @@ class PostSeeder extends Seeder
                 'title' => '10 Tips Packing Cerdas untuk Open Trip Agar Tidak Overload',
                 'excerpt' => 'Bawa barang terlalu banyak saat open trip bisa menjadi beban. Simak tips packing cerdas berikut agar perjalananmu lebih ringan dan menyenangkan.',
                 'content' => $this->contentPackingTips(),
+                'cover_image' => 'https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=1200&q=80',
                 'published_at' => now()->subDays(10),
             ],
             [
@@ -62,6 +63,7 @@ class PostSeeder extends Seeder
                 'title' => 'Mengapa Raja Ampat Jadi Surga Bawah Laut Terbaik di Dunia',
                 'excerpt' => 'Raja Ampat bukan sekadar destinasi wisata biasa. Kawasan ini menyimpan keanekaragaman hayati laut tertinggi di dunia yang membuat setiap penyelam terkagum-kagum.',
                 'content' => $this->contentRajaAmpat(),
+                'cover_image' => 'https://images.unsplash.com/photo-1516690561799-46d8f74f90f6?auto=format&fit=crop&w=1200&q=80',
                 'published_at' => now()->subDays(7),
             ],
             [
@@ -69,6 +71,7 @@ class PostSeeder extends Seeder
                 'title' => 'Panduan Lengkap Open Trip Bromo: Dari Persiapan hingga Pulang',
                 'excerpt' => 'Gunung Bromo adalah salah satu destinasi paling ikonik di Indonesia. Berikut panduan lengkap yang perlu kamu ketahui sebelum ikut open trip Bromo.',
                 'content' => $this->contentGuideBromo(),
+                'cover_image' => 'https://images.unsplash.com/photo-1588666309990-d68f08e3d4a6?auto=format&fit=crop&w=1200&q=80',
                 'published_at' => now()->subDays(5),
             ],
             [
@@ -76,6 +79,7 @@ class PostSeeder extends Seeder
                 'title' => 'Wajib Dicoba! 7 Kuliner Khas Lombok yang Bikin Ketagihan',
                 'excerpt' => 'Lombok tidak hanya terkenal dengan pantainya yang memukau, tapi juga kekayaan kulinernya. Dari ayam taliwang hingga plecing kangkung, inilah yang wajib kamu coba.',
                 'content' => $this->contentKulinerLombok(),
+                'cover_image' => 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80',
                 'published_at' => now()->subDays(3),
             ],
             [
@@ -83,6 +87,7 @@ class PostSeeder extends Seeder
                 'title' => 'Mengenal Tradisi Ngaben: Upacara Kremasi Suci di Bali',
                 'excerpt' => 'Ngaben adalah upacara kremasi umat Hindu Bali yang sarat makna spiritual. Memahami tradisi ini akan membuat pengalaman wisata budaya kamu di Bali semakin bermakna.',
                 'content' => $this->contentNgaben(),
+                'cover_image' => 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=80',
                 'published_at' => now()->subDays(2),
             ],
             [
@@ -90,6 +95,7 @@ class PostSeeder extends Seeder
                 'title' => 'Cara Memilih Open Trip yang Aman dan Terpercaya',
                 'excerpt' => 'Maraknya penipuan open trip membuat wisatawan harus lebih selektif. Simak panduan ini agar kamu tidak salah pilih operator trip.',
                 'content' => $this->contentMemilihOpenTrip(),
+                'cover_image' => 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=80',
                 'published_at' => now()->subDays(1),
             ],
             [
@@ -97,6 +103,7 @@ class PostSeeder extends Seeder
                 'title' => 'Pesona Labuan Bajo: Gerbang Menuju Keajaiban Flores',
                 'excerpt' => 'Labuan Bajo telah menjelma menjadi salah satu destinasi premium Indonesia. Temukan pesona kota kecil ini sebelum menjelajahi Komodo dan sekitarnya.',
                 'content' => $this->contentLabuanBajo(),
+                'cover_image' => 'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1200&q=80',
                 'published_at' => now(),
             ],
             [
@@ -104,6 +111,7 @@ class PostSeeder extends Seeder
                 'title' => 'Itinerary 3 Hari 2 Malam Jogja yang Wajib Kamu Coba',
                 'excerpt' => 'Yogyakarta selalu punya cerita. Dengan itinerary 3 hari ini, kamu bisa menjelajahi Borobudur, Prambanan, Keraton, dan sudut-sudut tersembunyi kota pelajar ini.',
                 'content' => $this->contentItineraryJogja(),
+                'cover_image' => 'https://images.unsplash.com/photo-1596402184320-417e7178b2cd?auto=format&fit=crop&w=1200&q=80',
                 'published_at' => now()->subHours(6),
             ],
         ];
@@ -119,7 +127,7 @@ class PostSeeder extends Seeder
                     'title' => $data['title'],
                     'excerpt' => $data['excerpt'],
                     'content' => $data['content'],
-                    'cover_image' => null,
+                    'cover_image' => $data['cover_image'],
                     'status' => 'published',
                     'published_at' => $data['published_at'],
                 ],

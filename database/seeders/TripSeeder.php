@@ -24,7 +24,7 @@ class TripSeeder extends Seeder
     {
         $data = [
             ['name' => 'Petualangan',      'icon' => 'zap',      'image' => 'https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=800&q=80'],
-            ['name' => 'Alam & Pegunungan','icon' => 'mountain',  'image' => 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80'],
+            ['name' => 'Alam & Pegunungan', 'icon' => 'mountain',  'image' => 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80'],
             ['name' => 'Pantai & Bahari',  'icon' => 'waves',     'image' => 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80'],
             ['name' => 'Budaya & Sejarah', 'icon' => 'landmark',  'image' => 'https://images.unsplash.com/photo-1596402184320-417e7178b2cd?auto=format&fit=crop&w=800&q=80'],
             ['name' => 'Religi',           'icon' => 'star',      'image' => 'https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&w=800&q=80'],
@@ -55,6 +55,7 @@ class TripSeeder extends Seeder
                 'price' => 450_000,
                 'quota' => 20,
                 'min_participants' => 8,
+                'cover_image' => 'https://images.unsplash.com/photo-1588666309990-d68f08e3d4a6?auto=format&fit=crop&w=1200&q=80',
                 'meeting_point' => 'Terminal Bungurasih, Surabaya',
                 'description' => 'Nikmati pesona Gunung Bromo saat sunrise yang memukau. Trip ini akan membawa Anda menyaksikan lautan pasir yang luas, kawah aktif Bromo, serta pemandangan matahari terbit yang spektakuler dari Penanjakan.',
                 'includes' => ['Transportasi PP', 'Jeep Bromo', 'Guide lokal', 'Tiket wisata', 'Sarapan hari ke-2'],
@@ -74,6 +75,7 @@ class TripSeeder extends Seeder
                 'price' => 4_500_000,
                 'quota' => 15,
                 'min_participants' => 8,
+                'cover_image' => 'https://images.unsplash.com/photo-1516690561799-46d8f74f90f6?auto=format&fit=crop&w=1200&q=80',
                 'meeting_point' => 'Bandara Domine Eduard Osok, Sorong',
                 'description' => 'Jelajahi keindahan bawah laut Raja Ampat yang diakui sebagai salah satu spot diving terbaik di dunia. Saksikan terumbu karang yang berwarna-warni, ikan-ikan tropis, dan panorama pulau-pulau kecil yang eksotis.',
                 'includes' => ['Kapal phinisi PP', 'Akomodasi di kapal', 'Makan 3x sehari', 'Snorkeling equipment', 'Guide lokal', 'Tiket masuk kawasan Raja Ampat'],
@@ -96,6 +98,7 @@ class TripSeeder extends Seeder
                 'price' => 2_800_000,
                 'quota' => 18,
                 'min_participants' => 8,
+                'cover_image' => 'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1200&q=80',
                 'meeting_point' => 'Bandara Komodo, Labuan Bajo',
                 'description' => 'Petualangan seru melihat Komodo di habitat aslinya, snorkeling di spot terbaik, dan menikmati sunset di Bukit Cinta. Trip impian bagi pecinta alam dan bahari.',
                 'includes' => ['Kapal wisata', 'Akomodasi 3 malam', 'Makan selama trip', 'Tiket Taman Nasional Komodo', 'Guide ranger', 'Snorkeling gear'],
@@ -117,6 +120,7 @@ class TripSeeder extends Seeder
                 'price' => 650_000,
                 'quota' => 25,
                 'min_participants' => 10,
+                'cover_image' => 'https://images.unsplash.com/photo-1596402184320-417e7178b2cd?auto=format&fit=crop&w=1200&q=80',
                 'meeting_point' => 'Stasiun Tugu, Yogyakarta',
                 'description' => 'Jelajahi kekayaan budaya Yogyakarta mulai dari Keraton, Borobudur, Prambanan, hingga kawasan seni Kotagede. Cocok untuk Anda yang ingin mengenal lebih dalam warisan budaya Jawa.',
                 'includes' => ['Transportasi lokal', 'Guide berlisensi', 'Tiket masuk wisata', 'Makan 2x sehari', 'Batik workshop'],
@@ -137,6 +141,7 @@ class TripSeeder extends Seeder
                 'price' => 1_800_000,
                 'quota' => 12,
                 'min_participants' => 6,
+                'cover_image' => 'https://images.unsplash.com/photo-1623916945674-98448a39151c?auto=format&fit=crop&w=1200&q=80',
                 'meeting_point' => 'Desa Senaru, Lombok Utara',
                 'description' => 'Taklukkan puncak Rinjani (3.726 mdpl), gunung berapi tertinggi kedua di Indonesia. Saksikan keindahan Danau Segara Anak, air terjun Sendang Gile, dan panorama Lombok dari ketinggian.',
                 'includes' => ['Porter', 'Guide bersertifikat', 'Tenda & sleeping bag', 'Makan selama pendakian', 'Tiket masuk TNGR', 'P3K'],
@@ -158,6 +163,7 @@ class TripSeeder extends Seeder
                 'price' => 550_000,
                 'quota' => 30,
                 'min_participants' => 15,
+                'cover_image' => 'https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&w=1200&q=80',
                 'meeting_point' => 'Masjid Agung Jawa Tengah, Semarang',
                 'description' => 'Ziarah ke makam-makam Wali Songo yang tersebar di Jawa Tengah dan Jawa Timur. Perjalanan spiritual yang memperkuat iman sekaligus mengenal sejarah penyebaran Islam di tanah Jawa.',
                 'includes' => ['Bus AC', 'Guide spiritual', 'Makan 2x sehari', 'Air mineral', 'Doorprize'],
@@ -176,7 +182,7 @@ class TripSeeder extends Seeder
             $startDate = $data['start_date'];
             $endDate = (clone $startDate)->modify("+{$data['duration_days']} days");
 
-            $trip = Trip::firstOrCreate(
+            $trip = Trip::updateOrCreate(
                 ['slug' => Str::slug($data['title'])],
                 [
                     'category_id' => $category->id,
@@ -191,6 +197,7 @@ class TripSeeder extends Seeder
                     'quota' => $data['quota'],
                     'min_participants' => $data['min_participants'],
                     'meeting_point' => $data['meeting_point'],
+                    'cover_image' => $data['cover_image'],
                     'status' => 'published',
                     'includes' => $data['includes'],
                     'excludes' => $data['excludes'],
@@ -198,7 +205,7 @@ class TripSeeder extends Seeder
             );
 
             foreach ($data['itineraries'] as $itinerary) {
-                TripItinerary::firstOrCreate(
+                TripItinerary::updateOrCreate(
                     ['trip_id' => $trip->id, 'day' => $itinerary['day']],
                     ['title' => $itinerary['title'], 'description' => $itinerary['description']],
                 );
