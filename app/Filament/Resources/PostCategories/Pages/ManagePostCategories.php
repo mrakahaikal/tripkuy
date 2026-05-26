@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Filament\Resources\PostCategories\Pages;
+
+use App\Filament\Resources\PostCategories\PostCategoryResource;
+use Filament\Actions\CreateAction;
+use Filament\Resources\Pages\ManageRecords;
+
+class ManagePostCategories extends ManageRecords
+{
+    protected static string $resource = PostCategoryResource::class;
+
+    protected ?string $heading = 'Kategori Artikel';
+
+    protected ?string $subheading = 'Kelola pengelompokan artikel blog.';
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            CreateAction::make()
+                ->label('Tambah Kategori')
+                ->icon('lucide-folder-plus'),
+        ];
+    }
+}
