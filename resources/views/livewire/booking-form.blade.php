@@ -9,7 +9,7 @@ new class extends Component
 {
     public Trip $trip;
 
-    public int $participantCount = 1;
+    public $participantCount = 1;
 
     /** @var array<int, array<string, string>> */
     public array $participants = [];
@@ -43,7 +43,8 @@ new class extends Component
 
     public function updatedParticipantCount(): void
     {
-        $this->participantCount = max(1, min((int) $this->participantCount, $this->trip->availableSlots()));
+        $count = filter_var($this->participantCount, FILTER_VALIDATE_INT);
+        $this->participantCount = max(1, min($count ?: 1, $this->trip->availableSlots()));
         $this->syncParticipants();
     }
 
@@ -52,23 +53,42 @@ new class extends Component
         $slots = $this->trip->availableSlots();
 
         $this->validate([
-            'participantCount'                           => ['required', 'integer', 'min:1', "max:{$slots}"],
-            'notes'                                      => ['nullable', 'string', 'max:500'],
-            'participants'                               => ['required', 'array', 'min:1'],
-            'participants.*.name'                        => ['required', 'string', 'max:100'],
-            'participants.*.id_number'                   => ['required', 'string', 'max:30'],
-            'participants.*.date_of_birth'               => ['required', 'date', 'before:today'],
-            'participants.*.gender'                      => ['required', 'in:male,female'],
-            'participants.*.phone'                       => ['nullable', 'string', 'max:20'],
-            'participants.*.emergency_contact_name'      => ['nullable', 'string', 'max:100'],
-            'participants.*.emergency_contact_phone'     => ['nullable', 'string', 'max:20'],
+            'participantCount' => ['required', 'integer', 'min:1', "max:{$slots}"],
+            'notes' => ['nullable', 'string', 'max:500'],
+            'participants' => ['required', 'array', 'min:1'],
+            'participants.*.name' => ['required', 'string', 'max:100'],
+            'participants.*.id_number' => ['required', 'string', 'max:30'],
+            'participants.*.date_of_birth' => ['required', 'date', 'before:today'],
+            'participants.*.gender' => ['required', 'in:male,female'],
+            'participants.*.phone' => ['nullable', 'string', 'max:20'],
+            'participants.*.emergency_contact_name' => ['nullable', 'string', 'max:100'],
+            'participants.*.emergency_contact_phone' => ['nullable', 'string', 'max:20'],
+        ], [
+            'participantCount.max' => 'Slot tidak mencukupi, hanya tersisa :max slot.',
+            'participants.*.name.required' => 'Nama lengkap wajib diisi.',
+            'participants.*.id_number.required' => 'Nomor KTP/Paspor wajib diisi.',
+            'participants.*.date_of_birth.required' => 'Tanggal lahir wajib diisi.',
+            'participants.*.date_of_birth.before' => 'Tanggal lahir tidak valid.',
+            'participants.*.gender.required' => 'Jenis kelamin wajib dipilih.',
+            'participants.*.gender.in' => 'Pilihan jenis kelamin tidak valid.',
+        ], [
+            'participantCount' => 'jumlah peserta',
+            'notes' => 'catatan',
+            'participants' => 'data peserta',
+            'participants.*.name' => 'nama lengkap',
+            'participants.*.id_number' => 'nomor KTP/Paspor',
+            'participants.*.date_of_birth' => 'tanggal lahir',
+            'participants.*.gender' => 'jenis kelamin',
+            'participants.*.phone' => 'nomor telepon',
+            'participants.*.emergency_contact_name' => 'nama kontak darurat',
+            'participants.*.emergency_contact_phone' => 'nomor telepon kontak darurat',
         ]);
 
         try {
             $booking = $action->execute(auth()->user(), $this->trip, [
                 'participant_count' => $this->participantCount,
-                'notes'             => $this->notes ?: null,
-                'participants'      => $this->participants,
+                'notes' => $this->notes ?: null,
+                'participants' => $this->participants,
             ]);
         } catch (ValidationException $e) {
             foreach ($e->errors() as $field => $messages) {
@@ -84,12 +104,12 @@ new class extends Component
     private function syncParticipants(): void
     {
         $blank = [
-            'name'                    => '',
-            'id_number'               => '',
-            'date_of_birth'           => '',
-            'gender'                  => '',
-            'phone'                   => '',
-            'emergency_contact_name'  => '',
+            'name' => '',
+            'id_number' => '',
+            'date_of_birth' => '',
+            'gender' => '',
+            'phone' => '',
+            'emergency_contact_name' => '',
             'emergency_contact_phone' => '',
         ];
 
@@ -221,6 +241,9 @@ new class extends Component
                                    wire:model="participants.{{ $i }}.phone"
                                    class="input"
                                    placeholder="08xxxxxxxxxx">
+                            @error("participants.{$i}.phone")
+                                <p class="text-sm text-danger mt-1">{{ $message }}</p>
+                            @enderror
                         </div>
 
                         <div>
@@ -229,6 +252,9 @@ new class extends Component
                                    wire:model="participants.{{ $i }}.emergency_contact_name"
                                    class="input"
                                    placeholder="Nama kerabat/keluarga">
+                            @error("participants.{$i}.emergency_contact_name")
+                                <p class="text-sm text-danger mt-1">{{ $message }}</p>
+                            @enderror
                         </div>
 
                         <div>
@@ -237,6 +263,9 @@ new class extends Component
                                    wire:model="participants.{{ $i }}.emergency_contact_phone"
                                    class="input"
                                    placeholder="08xxxxxxxxxx">
+                            @error("participants.{$i}.emergency_contact_phone")
+                                <p class="text-sm text-danger mt-1">{{ $message }}</p>
+                            @enderror
                         </div>
 
                     </div>
