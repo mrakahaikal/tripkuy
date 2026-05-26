@@ -62,7 +62,6 @@ class DatabaseSeeder extends Seeder
             ],
         );
 
-
         User::firstOrCreate(
             ['email' => 'admin@tripkuy.test'],
             [
@@ -85,5 +84,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call(TripSeeder::class);
         $this->call(PostSeeder::class);
+        $this->call(RealisticBookingSeeder::class);
     }
 }
