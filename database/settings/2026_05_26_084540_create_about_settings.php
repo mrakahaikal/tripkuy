@@ -6,6 +6,6 @@ return new class extends SettingsMigration
 {
     public function up(): void
     {
-        $this->migrator->add('about.team', '[]');
+        $this->migrator->add('about.team', []);
     }
 };
