@@ -23,6 +23,7 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_PORT || 22 }}
           script: |
+            git config --global --add safe.directory /var/www/tripkuy
             cd /var/www/tripkuy
             php artisan down || true
             git pull origin main

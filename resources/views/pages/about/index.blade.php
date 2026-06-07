@@ -201,7 +201,7 @@
                 subtitle="Kami adalah tim kecil yang bersemangat dan mencintai petualangan."
                 align="center"
             />
-            
+
             @inject('about', 'App\Settings\AboutSettings')
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
                 @forelse($about->team as $index => $member)
