@@ -24,7 +24,7 @@
                     Blog
                 </a>
                 <a href="{{ route('about.index') }}" wire:navigate class="nav-link {{ request()->routeIs('about.*') ? 'active' : '' }}">
-                    Tentang
+                    Tentang Kami
                 </a>
                 <a href="{{ route('contact.index') }}" wire:navigate class="nav-link {{ request()->routeIs('contact.*') ? 'active' : '' }}">
                     Kontak

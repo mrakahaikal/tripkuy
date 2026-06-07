@@ -23,36 +23,73 @@
         </div>
     </div>
 
-    {{-- Mobile sidebar drawer --}}
+    {{-- Mobile bottom sheet --}}
     <div
-        x-show="sidebarOpen"
-        x-cloak
+        :class="sidebarOpen ? '' : 'pointer-events-none'"
         class="fixed inset-0 z-50 lg:hidden"
     >
         {{-- Backdrop --}}
         <div
+            x-show="sidebarOpen"
+            x-cloak
+            x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="transition ease-in duration-200"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0"
             class="absolute inset-0 bg-black/50"
             @click="sidebarOpen = false"
         ></div>
 
-        {{-- Drawer --}}
+        {{-- Sheet --}}
         <div
-            class="absolute left-0 top-0 bottom-0 w-80 bg-surface-raised overflow-y-auto shadow-2xl"
+            x-show="sidebarOpen"
+            x-cloak
             x-transition:enter="transition ease-out duration-300"
-            x-transition:enter-start="-translate-x-full"
-            x-transition:enter-end="translate-x-0"
-            x-transition:leave="transition ease-in duration-200"
-            x-transition:leave-start="translate-x-0"
-            x-transition:leave-end="-translate-x-full"
+            x-transition:enter-start="translate-y-full"
+            x-transition:enter-end="translate-y-0"
+            x-transition:leave="transition ease-in duration-250"
+            x-transition:leave-start="translate-y-0"
+            x-transition:leave-end="translate-y-full"
+            class="absolute inset-x-0 bottom-0 flex flex-col bg-surface-raised rounded-t-2xl shadow-2xl max-h-[85dvh]"
         >
-            <div class="flex items-center justify-between p-4 border-b border-border">
-                <span class="font-display font-semibold text-ink">Filter Trip</span>
-                <button @click="sidebarOpen = false" class="btn btn-ghost btn-sm p-1.5">
-                    <x-lucide-x class="w-4 h-4" />
-                </button>
+            {{-- Drag handle --}}
+            <div class="flex justify-center pt-3 pb-1 shrink-0">
+                <div class="w-10 h-1 rounded-full bg-border"></div>
             </div>
-            <div class="p-4">
+
+            {{-- Header --}}
+            <div class="flex items-center justify-between px-5 py-3 border-b border-border shrink-0">
+                <div class="flex items-center gap-2">
+                    <span class="font-display font-semibold text-ink">Filter Trip</span>
+                    @if($this->hasActiveFilters())
+                        <span class="w-5 h-5 rounded-full bg-brand-600 text-white text-[0.65rem] font-bold flex items-center justify-center">!</span>
+                    @endif
+                </div>
+                <div class="flex items-center gap-3">
+                    @if($this->hasActiveFilters())
+                        <button wire:click="resetFilters" class="text-sm font-medium text-brand-600 hover:text-brand-700 transition-colors">
+                            Reset semua
+                        </button>
+                    @endif
+                    <button @click="sidebarOpen = false" class="btn btn-ghost btn-sm p-1.5">
+                        <x-lucide-x class="w-4 h-4" />
+                    </button>
+                </div>
+            </div>
+
+            {{-- Scrollable filter body --}}
+            <div class="overflow-y-auto flex-1 px-5 py-4 flex flex-col gap-5">
                 @include('livewire.partials.trip-filter-body')
+            </div>
+
+            {{-- Footer --}}
+            <div class="px-5 py-4 border-t border-border shrink-0">
+                <button @click="sidebarOpen = false" class="btn btn-primary btn-md w-full justify-center">
+                    <x-lucide-check class="w-4 h-4" />
+                    Terapkan Filter
+                </button>
             </div>
         </div>
     </div>

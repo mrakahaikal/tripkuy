@@ -201,53 +201,26 @@
                 subtitle="Kami adalah tim kecil yang bersemangat dan mencintai petualangan."
                 align="center"
             />
-
-            @php
-            $team = [
-                [
-                    'name'   => 'Andi Pratama',
-                    'role'   => 'Co-founder & CEO',
-                    'img'    => 'photo-1507003211169-0a1dd7228f2d',
-                    'quote'  => 'Perjalanan terbaik adalah yang berbagi cerita dengan orang-orang baru.',
-                ],
-                [
-                    'name'   => 'Sari Dewi',
-                    'role'   => 'Co-founder & CTO',
-                    'img'    => 'photo-1494790108377-be9c29b29330',
-                    'quote'  => 'Teknologi terbaik adalah yang tidak kamu sadari keberadaannya.',
-                ],
-                [
-                    'name'   => 'Budi Santoso',
-                    'role'   => 'Head of Operations',
-                    'img'    => 'photo-1500648767791-00dcc994a43e',
-                    'quote'  => 'Kepuasan traveler adalah metrik terpenting yang kami ukur setiap hari.',
-                ],
-                [
-                    'name'   => 'Maya Lestari',
-                    'role'   => 'Head of Guide Relations',
-                    'img'    => 'photo-1438761681033-6461ffad8d80',
-                    'quote'  => 'Guide lokal yang hebat adalah jantung dari setiap perjalanan yang berkesan.',
-                ],
-            ];
-            @endphp
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                @foreach($team as $member)
+            
+            @inject('about', 'App\Settings\AboutSettings')
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                @forelse($about->team as $index => $member)
                     <div class="bg-white rounded-2xl border border-border overflow-hidden text-center group">
                         <div class="aspect-square overflow-hidden">
                             <img
-                                src="https://images.unsplash.com/{{ $member['img'] }}?w=400&h=400&fit=crop&q=80"
+                                src="{{ $member['avatar'] ? Storage::url($member['avatar']) : "https://ui-avatars.com/api/?name={$member['name']}" }}"
                                 alt="{{ $member['name'] }}"
                                 class="size-full object-cover transition-transform duration-500 group-hover:scale-105"
                             >
                         </div>
                         <div class="p-5">
                             <div class="font-display font-bold text-ink text-[1.0625rem]">{{ $member['name'] }}</div>
-                            <div class="text-xs font-semibold text-brand-600 uppercase tracking-wider mt-0.5 mb-3">{{ $member['role'] }}</div>
-                            <p class="text-sm text-ink-muted italic leading-relaxed m-0">"{{ $member['quote'] }}"</p>
+                            <div class="text-xs font-semibold text-brand-600 uppercase tracking-wider mt-0.5 mb-3">{{ $member['nim'] }}</div>
                         </div>
                     </div>
-                @endforeach
+                @empty
+                    <p>Ups, belum ada tim</p>
+                @endforelse
             </div>
 
         </div>

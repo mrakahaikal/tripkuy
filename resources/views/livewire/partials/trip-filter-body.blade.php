@@ -56,7 +56,7 @@
 {{-- Tanggal keberangkatan --}}
 <div class="flex flex-col gap-1.5">
     <label class="text-xs font-semibold text-ink-secondary uppercase tracking-wide">Tanggal Berangkat</label>
-    <div class="flex flex-col gap-1.5">
+    <div class="grid grid-cols-2 gap-2">
         <div class="flex flex-col gap-1">
             <span class="text-xs text-ink-muted">Dari</span>
             <input
@@ -103,9 +103,9 @@
 {{-- Tingkat kesulitan --}}
 <div class="flex flex-col gap-2">
     <label class="text-xs font-semibold text-ink-secondary uppercase tracking-wide">Tingkat Kesulitan</label>
-    <div class="flex flex-col gap-1.5">
+    <div class="flex flex-wrap gap-2">
         @foreach([['easy', 'Mudah', 'badge-success'], ['moderate', 'Sedang', 'badge-warning'], ['hard', 'Sulit', 'badge-danger']] as [$val, $label, $badge])
-            <label class="flex items-center gap-2 cursor-pointer">
+            <label class="flex items-center gap-1.5 cursor-pointer">
                 <input
                     wire:model.live="difficulty"
                     type="checkbox"
@@ -121,7 +121,7 @@
 {{-- Durasi --}}
 <div class="flex flex-col gap-2">
     <label class="text-xs font-semibold text-ink-secondary uppercase tracking-wide">Durasi Trip</label>
-    <div class="flex flex-col gap-1.5">
+    <div class="flex flex-wrap gap-x-4 gap-y-2">
         @foreach([['1-3', '1–3 hari'], ['4-7', '4–7 hari'], ['8+', '8+ hari']] as [$val, $label])
             <label class="flex items-center gap-2 cursor-pointer">
                 <input

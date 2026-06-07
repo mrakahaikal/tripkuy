@@ -151,7 +151,7 @@ new class extends Component
                             <x-lucide-minus class="w-4 h-4" />
                         </button>
                         <input type="number"
-                               wire:model.live="participantCount"
+                               wire:model.blur="participantCount"
                                x-mask="999"
                                min="1"
                                max="{{ $trip->availableSlots() }}"
